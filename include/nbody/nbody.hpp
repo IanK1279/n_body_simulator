@@ -13,4 +13,5 @@ namespace nbody {
         double mass{1.0};
     };
 
+    using System = std::vector<Body>;
 }
