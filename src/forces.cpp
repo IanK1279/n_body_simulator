@@ -18,8 +18,8 @@ namespace nbody {
                 double r = std::sqrt(r2);
 
                 // Assuming G = 1 for simplification
-                result[i][0] = s[j].mass * dx / (r2 * r);
-                result[i][1] = s[j].mass * dy / (r2 * r);
+                result[i][0] += s[j].mass * dx / (r2 * r);
+                result[i][1] += s[j].mass * dy / (r2 * r);
 
             }
         }
