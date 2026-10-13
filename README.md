@@ -9,9 +9,9 @@ src: Contains the calculation scripts for the headers and a main script to run t
 
 # DELETE LATER
 ### Checklist:
-1. body.hpp
-2. forces.hpp
-3. forces.cpp
+1. body.hpp - Done
+2. forces.hpp - Done
+3. forces.cpp -
 4. integrators.hpp (euler only for now)
 5. integrators.cpp (euler only for now)
 6. main.cpp
