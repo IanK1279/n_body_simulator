@@ -11,10 +11,10 @@ src: Contains the calculation scripts for the headers and a main script to run t
 ### Checklist:
 1. body.hpp - Done
 2. forces.hpp - Done
-3. forces.cpp -
-4. integrators.hpp (euler only for now)
-5. integrators.cpp (euler only for now)
-6. main.cpp
+3. forces.cpp - done
+4. integrators.hpp (euler only for now) - done
+5. integrators.cpp (euler only for now) - done
+6. main.cpp - done
 7. CMakeLists.txt (build shortcut)
 8. Add graph
 9. Add other integrators
