@@ -7,16 +7,26 @@ int main() {
 
     nbody::System s;
     // x, y, xvel, yvel, mass
-    s.push_back({0, 0, 0, -0.001, 1});
-    s.push_back({1, 0, 0, 1, 0.001});
+    s.push_back({2, 0, 0, -0.5, 2});
+    s.push_back({1, 0, 0, 1, 0.5});
+    s.push_back({0, 4, -1, 0, 0.5});
+    s.push_back({0, 4, 0, 1, 1});
 
     double dt = 0.01;
     int steps = 10000;
     std::cout.precision(10);
-    std::cout << "t," << "x0," << "y0," << "x1," << "y1" << "\n";
+    std::cout << "t";
+    for (int i = 0; i < s.size() ; i++) {
+        std::cout << ",x" << i << "," << "y" << i;
+    }
+    std::cout << "\n";
     for (int step = 0; step < steps; step++){     
         double t = step * dt;   
-        std::cout << t << "," << s[0].x << ","  << s[0].y << "," << s[1].x << "," << s[1].y << "\n";
+        std::cout << t;
+        for (int i = 0; i < s.size(); i++) {
+            std::cout << "," << s[i].x << ","  << s[i].y ;
+        }
+        std::cout << "\n";
         nbody::euler(s, dt);
     }
     return 0;

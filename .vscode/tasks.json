@@ -1,0 +1,17 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+        "label": "run calculation",
+        "type": "shell",
+        "command": "clang++ -std=c++17 -O2 -Iinclude src/*.cpp -o nbody && ./nbody > out.csv",
+        "problemMatcher": []
+    },
+    {
+        "label": "plot last calculation",
+        "type": "shell",
+        "command": "${workspaceFolder}/.venv/bin/python3 scripts/graph.py && open trajectory.png",
+        "problemMatcher": []
+    }
+]
+}

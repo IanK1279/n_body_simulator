@@ -15,8 +15,8 @@ src: Contains the calculation scripts for the headers and a main script to run t
 4. integrators.hpp (euler only for now) - done
 5. integrators.cpp (euler only for now) - done
 6. main.cpp - done
-7. CMakeLists.txt (build shortcut)
-8. Add graph
+7. CMakeLists.txt (build shortcut) - json version done
+8. Add graph - done
 9. Add other integrators
 10. Create tests
 11. CI/CD
