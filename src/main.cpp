@@ -7,10 +7,11 @@ int main() {
 
     nbody::System s;
     // x, y, xvel, yvel, mass
-    s.push_back({2, 0, 0, -0.5, 2});
-    s.push_back({1, 0, 0, 1, 0.5});
-    s.push_back({0, 4, -1, 0, 0.5});
-    s.push_back({0, 4, 0, 1, 1});
+    s.push_back({0, 2, -0.5, 0, 0.0001});
+    s.push_back({-2, 0, 0, -0.5, 0.0001});
+    s.push_back({0, -2, 0.5, 0, 0.0001});
+    s.push_back({2, 0, 0, 0.5, 0.0001});
+    s.push_back({0, 0, 0, 0.01, 0.5});
 
     double dt = 0.01;
     int steps = 10000;

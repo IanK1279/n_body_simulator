@@ -10,6 +10,6 @@ for i in range(n):
 plt.gca().set_aspect("equal") ## ensures our aspect ratio is 1:1
 plt.xlabel("x")
 plt.ylabel("y")
-plt.title("Euler: two-body orbit")
+plt.title(f"Euler: {n}-body orbit")
 plt.legend()
 plt.savefig("trajectory.png", dpi=150)
