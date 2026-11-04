@@ -18,6 +18,12 @@
         "type": "shell",
         "command": "clang++ -std=c++17 -O2 -Iinclude src/*.cpp -o nbody && ./nbody > out.csv && ${workspaceFolder}/.venv/bin/python3 scripts/graph.py && open trajectory.png",
         "problemMatcher": []
+    },
+    {
+        "label": "run+anim",
+        "type": "shell",
+        "command": "clang++ -std=c++17 -O2 -Iinclude src/*.cpp -o nbody && ./nbody > out.csv && ${workspaceFolder}/.venv/bin/python3 scripts/animate.py",
+        "problemMatcher": []
     }
 ]
 }

@@ -1,17 +1,38 @@
 #include "nbody/body.hpp"
 #include "nbody/integrators.hpp"
 
+#include <fstream>     // std::ifstream
+#include <sstream>     // std::istringstream
+#include <string>
 #include <iostream>
+
+nbody::System load_preset(std::string& path) {
+    nbody::System s;
+    // read file
+    std::ifstream file(path);
+    if (!file) {
+        std::cerr << "Could not open " << path << "\n";
+        return s;
+    }
+    std::string line;
+    while (std::getline(file, line)) {
+        std::istringstream ss(line);
+        nbody::Body b;
+        if (ss >> b.x >> b.y >> b.xvel >> b.yvel >> b.mass) {
+            s.push_back(b);
+        }
+    }
+    return s;
+
+}
 
 int main() {
 
-    nbody::System s;
-    // x, y, xvel, yvel, mass
-    s.push_back({0, 2, 0.5, 0, 1});
-    s.push_back({2, 0, -0.5, 0, 1});
+    std::string preset_path = "presets/sunplanetmoon.txt";
+    nbody::System s = load_preset(preset_path);
 
     double dt = 0.01;
-    int steps = 10000;
+    int steps = 12000;
     std::cout.precision(10);
     std::cout << "t";
     for (int i = 0; i < s.size() ; i++) {
