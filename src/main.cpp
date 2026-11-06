@@ -32,7 +32,7 @@ int main() {
     nbody::System s = load_preset(preset_path);
 
     double dt = 0.01;
-    int steps = 12000;
+    int steps = 15000;
     std::cout.precision(10);
     std::cout << "t";
     for (int i = 0; i < s.size() ; i++) {
