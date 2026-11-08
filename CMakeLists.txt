@@ -10,8 +10,8 @@ endif()
 # Library: everything except main()
 add_library(nbody_lib
   src/forces.cpp
-  src/integrators.cpp)
-  # add src/diagnostics.cpp here in step 3
+  src/integrators.cpp
+  src/diagnostics.cpp)
 target_include_directories(nbody_lib PUBLIC include)
 target_compile_options(nbody_lib PRIVATE -Wall -Wextra)
 
