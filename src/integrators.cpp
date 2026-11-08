@@ -14,6 +14,15 @@ namespace nbody {
             s[i].xvel += acc[i][0] * dt;
             s[i].yvel += acc[i][1] * dt;
         }
+    }
 
+    
+    void leapfrog(System& s, double dt) {
+        // Compute acceleration at current position
+        
+        // half-kick velocity
+        // update position
+        // Compute acceleration at next position
+        // half-kick velocity
     }
 }
