@@ -31,8 +31,8 @@ int main() {
     std::string preset_path = "presets/sunplanetmoon.txt";
     nbody::System s = load_preset(preset_path);
 
-    double dt = 0.01;
-    int steps = 15000;
+    double dt = 0.001;
+    int steps = 10000;
     std::cout.precision(10);
     std::cout << "t";
     for (int i = 0; i < s.size() ; i++) {
@@ -46,7 +46,7 @@ int main() {
             std::cout << "," << s[i].x << ","  << s[i].y ;
         }
         std::cout << "\n";
-        nbody::euler(s, dt);
+        nbody::rk4(s, dt);
     }
     return 0;
 }
