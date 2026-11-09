@@ -24,6 +24,12 @@
         "type": "shell",
         "command": "clang++ -std=c++17 -O2 -Iinclude src/*.cpp -o nbody && ./nbody > out.csv && ${workspaceFolder}/.venv/bin/python3 scripts/animate.py",
         "problemMatcher": []
+    },
+    {
+        "label": "ctest build+run",
+        "type": "shell",
+        "command": "cmake -S . -B build && cmake --build build && ctest --test-dir build --output-on-failure",
+        "problemMatcher": []
     }
 ]
 }
