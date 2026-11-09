@@ -28,6 +28,14 @@ namespace {
         return s;
     }
 
+    double separation(System& s) {
+            return std::hypot(s[1].x - s[0].x, s[1].y - s[0].y);
+    }
+
+    double rel_drift(double e_start, double e_end) {
+        return std::abs((e_end - e_start) / e_start);
+    }
+
     void run(System& s, Integrator step, int steps, double dt) {
         for (int i = 0; i < steps; i++) step(s, dt);
     }
@@ -49,23 +57,27 @@ TEST(RK4, ConservesMomentum) {
     run(s, rk4, 62832, 0.001);
     auto p = total_momentum(s);
     EXPECT_NEAR(p[0], 0.0, 1e-12);
-    EXPECT_NEAR(p[0], 0.0, 1e-12);
+    EXPECT_NEAR(p[1], 0.0, 1e-12);
 }
 
 TEST(RK4, CircularOrbitStaysCircular) {
     System s = circular_orbit();
     run(s, rk4, 62832, 0.001);
-    // TODO: EXPECT_NEAR the separation to 1.0, tolerance 1e-6
+    EXPECT_NEAR(separation(s), 1.0, 1e-6);
 }
 
 TEST(Euler, ConservesMomentum) {
-    // TODO: same as RK4 momentum, using euler
+    System s = circular_orbit();
+    run(s, euler, 62832, 0.001);
+    auto p = total_momentum(s);
+    EXPECT_NEAR(p[0], 0.0, 1e-12);
+    EXPECT_NEAR(p[1], 0.0, 1e-12);
 }
 
 TEST(Euler, OrbitSpiralsOutward) {
     System s = circular_orbit();
     run(s, euler, 62832, 0.001);
-    // TODO: EXPECT_GT the separation to 1.05
+    EXPECT_GT(separation(s), 1.05);
 }
 
 TEST(Comparison, EulerFailsTightBoundRK4Passes) {
@@ -74,7 +86,9 @@ TEST(Comparison, EulerFailsTightBoundRK4Passes) {
     System r = circular_orbit();
     double e0 = total_energy(e);
 
-    // TODO: run e with euler and r with rk4, 62832 steps, dt = 0.001
-    // TODO: EXPECT_GT(rel_drift(e0, total_energy(e)), tight);   // Euler violates it
-    // TODO: EXPECT_LT(rel_drift(e0, total_energy(r)), tight);   // RK4 satisfies it
+    run(e, euler, 62832, 0.001);
+    run(r, rk4, 62832, 0.001);
+
+    EXPECT_GT(rel_drift(e0, total_energy(e)), tight);
+    EXPECT_LT(rel_drift(e0, total_energy(r)), tight);
 }
